@@ -1,0 +1,49 @@
+public class GreatestNSmallestInArray {
+
+    public static int getGreatestNum(int[] array, int size) {
+
+         array = sortingOperation(array, size);
+
+        return array[size - 1];
+
+    }
+
+    public static int getSmallesttNum(int[] array, int size) {
+
+        array = sortingOperation(array, size);
+
+        return array[0];
+
+    }
+
+    private static int[] sortingOperation(int[] array, int size) {
+        int index = 0;
+
+        while (index < size) {
+            int post_index = index + 1;
+
+            while (post_index < size) {
+
+                if (array[index] > array[post_index]) {
+                    int temp = array[index];
+                    array[index] = array[post_index];
+                    array[post_index] = temp;
+                }
+
+                ++post_index;
+            }
+            ++index;
+        }
+        return array;
+    }
+
+
+    public static void main(String[] args) {
+
+        int[] test = {10, 4, 7, 9, -1,68,700};
+
+       // System.out.print(getSmallestNum(test, 5));
+        System.out.println("Greatest Number : "+getSmallesttNum(test, 7)+" in Array");
+        System.out.print("Greatest Number : "+getGreatestNum(test, 7)+" in Array");
+    }
+}
